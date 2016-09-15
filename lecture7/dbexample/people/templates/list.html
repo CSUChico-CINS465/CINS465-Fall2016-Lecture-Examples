@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %} {{ page_name }} {% endblock %}
+
+{% block content %}
+  <ul style="margin-left: 0.5in;">
+    {% for item in list %}
+    <li> {{ item }} </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
