@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %} {{ page_name }} {% endblock %}
+
+{% block content %}
+  <h3>Submit Suggestion</h3>
+  <form action="" method="post">
+      {% csrf_token %}
+      <div class="field">
+        {{ form.submission.errors }}
+        {{ form.submission }}
+      </div>
+      <p><input type="submit" value="Submit Suggestion"/></p>
+  </form>
+  <ul style="margin-left: 0.5in;">
+    {% for item in submissions %}
+    <li> {{ item }} </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
