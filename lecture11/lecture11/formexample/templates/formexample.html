@@ -29,6 +29,16 @@
     </ul>
   </div>
 </div>
-
+<div class="row">
+  <div class="large-12 columns" id="container">
+      <p>If you can see this React is not working.</p>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+<script src="{% static "js/vendor/react.js" %}"></script>
+<script src="{% static "js/vendor/react-dom.js" %}"></script>
+<script type="text/babel" src="{% static "js/helloworld.js" %}"></script>
 
 {% endblock %}
