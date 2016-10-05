@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 from django.utils.html import escape
 import datetime
+
+import simplejson as json
 
 from .forms import SubmissionForm
 from .models import submissions
@@ -31,3 +33,15 @@ def index(request):
         'form':form
         }
     return render(request,'formexample.html',context)
+
+def suggestions(request):
+    if request.method == "GET":
+        suggestList = submissions.objects.all()
+        slist = []
+        for s in suggestList:
+            sdict = {}
+            sdict["id"] = s.id
+            sdict["topic"] = s.topic
+            slist += [sdict]
+        return HttpResponse(json.dumps(slist))
+    return HttpResponse("404")
