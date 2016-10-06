@@ -22,18 +22,20 @@
   </div>
   <div class="large-6 medium-6 columns">
     <h3>Suggestions</h3>
-    <ul style="margin-left: 0.5in;">
-      {% for item in submissions %}
-      <li> {{ item }} </li>
-      {% endfor %}
-    </ul>
+    <div id="suggested">
+      <ul style="margin-left: 0.5in;">
+        {% for item in submissions %}
+        <li> {{ item }} </li>
+        {% endfor %}
+      </ul>
+    </div>
   </div>
 </div>
-<div class="row">
+<!-- <div class="row">
   <div class="large-12 columns" id="container">
       <p>If you can see this React is not working.</p>
   </div>
-</div>
+</div> -->
 {% endblock %}
 {% block scripts %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>

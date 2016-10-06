@@ -12,7 +12,7 @@ def verify_suggestion(value):
 class SubmissionForm(forms.Form):
     submission = forms.CharField(
         max_length=144,
-        #validators=[verify_suggestion,validate_slug],
+        validators=[validate_slug],
         label='Suggest Topic',
         required=True,
         help_text='144 characters max',
