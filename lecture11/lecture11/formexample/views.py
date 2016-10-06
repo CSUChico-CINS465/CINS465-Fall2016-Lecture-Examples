@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from django.utils.html import escape
+from django.http import JsonResponse
 import datetime
 
 import simplejson as json
@@ -43,5 +44,6 @@ def suggestions(request):
             sdict["id"] = s.id
             sdict["topic"] = s.topic
             slist += [sdict]
-        return HttpResponse(json.dumps(slist))
+        #return JsonResponse(json.dumps(slist))
+        return JsonResponse({'suggestions': slist})
     return HttpResponse("404")
