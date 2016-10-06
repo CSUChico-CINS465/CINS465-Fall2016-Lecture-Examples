@@ -44,6 +44,5 @@ def suggestions(request):
             sdict["id"] = s.id
             sdict["topic"] = s.topic
             slist += [sdict]
-        #return JsonResponse(json.dumps(slist))
         return JsonResponse({'suggestions': slist})
     return HttpResponse("404")
