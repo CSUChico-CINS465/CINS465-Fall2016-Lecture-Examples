@@ -21,8 +21,12 @@
 // )
 var ExampleApplication = React.createClass({
    render: function() {
-     var message = this.props.data.suggestions
-     return React.DOM.p(null, JSON.stringify(this.props.data.suggestions));
+     var listItems = this.props.data.suggestions.map(function(item){
+       return (
+         <li key={item.id}>{item.topic}</li>
+       )
+     });
+     return <ul style={{"marginLeft":"0.5in"}}>{listItems}</ul>
    }
  });
 
@@ -37,7 +41,7 @@ var ExampleApplication = React.createClass({
       //console.log(data);
       ReactDOM.render(
           ExampleApplicationFactory({data: data}),
-          document.getElementById('container'));
+          document.getElementById('suggested'));
     }
   })
 }, 500);
