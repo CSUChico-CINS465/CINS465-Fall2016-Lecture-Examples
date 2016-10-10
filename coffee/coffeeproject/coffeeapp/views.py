@@ -11,4 +11,4 @@ def index(request):
         'page_name':"Home",
         'content':"Hello World"
         }
-    return render(request,'formexample.html',context)
+    return render(request,'home.html',context)
