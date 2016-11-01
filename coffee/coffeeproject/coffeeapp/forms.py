@@ -27,3 +27,12 @@ class RegisterForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+
+class blog_entry(forms.Form):
+    #published_on=models.DateTimeField()
+    title=forms.CharField(label="Title",max_length=144)
+    content=forms.CharField(label="Blog Content",widget=forms.Textarea)
+    image=forms.ImageField(label="Image File")
+    image_description=forms.CharField(label="Image Description", max_length=144)
+    #author=models.ForeignKey(User, on_delete=models.CASCADE)

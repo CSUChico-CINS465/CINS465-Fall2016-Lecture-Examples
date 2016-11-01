@@ -5,7 +5,7 @@ import datetime
 from django.contrib.auth.decorators import login_required
 
 import simplejson as json
-from .forms import RegisterForm
+from .forms import *
 from django.contrib.auth import authenticate, login
 
 # Create your views here.
@@ -33,3 +33,14 @@ def register(request):
         'form':form
     }
     return render(request,'register.html',context)
+
+def create_blog_post(request):
+    if request.method=='POST':
+        print("HAHAHAHA")
+        form = blog_entry()
+    else:
+        form = blog_entry()
+    context = {
+        'form':form
+    }
+    return render(request,'blogform.html',context)

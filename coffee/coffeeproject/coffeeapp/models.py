@@ -1,3 +1,21 @@
 from django.db import models
 
+from django.contrib.auth.models import User
+
+
+
+
+class Blog(models.Model):
+    published_on=models.DateTimeField()
+    title=models.CharField(max_length=144)
+    content=models.TextField()
+    image=models.ImageField(max_length=144, upload_to='uploads/%Y/%m/%d/')
+    image_description=models.CharField(max_length=144)
+    author=models.ForeignKey(User, on_delete=models.CASCADE)
+
 # Create your models here.
+class comment(models.Model):
+    posted_on=models.DateTimeField()
+    comment_content=models.CharField(max_length=144)
+    author=models.ForeignKey(User, on_delete=models.CASCADE)
+    blog=models.ForeignKey(Blog,related_name="comments")
