@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
+from .models import Blog
 
 class LoginForm(AuthenticationForm):
     username = forms.CharField(
@@ -30,9 +31,18 @@ class RegisterForm(UserCreationForm):
 
 
 class blog_entry(forms.Form):
-    #published_on=models.DateTimeField()
     title=forms.CharField(label="Title",max_length=144)
     content=forms.CharField(label="Blog Content",widget=forms.Textarea)
     image=forms.ImageField(label="Image File")
     image_description=forms.CharField(label="Image Description", max_length=144)
-    #author=models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def save(self, request , commit=True):
+        blog = Blog()
+        blog.title=self.cleaned_data['title']
+        blog.content=self.cleaned_data['content']
+        blog.image=self.cleaned_data['image']
+        blog.image_description=self.cleaned_data['image_description']
+        blog.author=request.user
+        if commit:
+            blog.save()
+        return blog

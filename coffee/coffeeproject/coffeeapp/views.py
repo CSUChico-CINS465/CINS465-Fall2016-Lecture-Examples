@@ -9,11 +9,11 @@ from .forms import *
 from django.contrib.auth import authenticate, login
 
 # Create your views here.
-@login_required(login_url="/login/")
+#@login_required(login_url="/login/")
 def index(request):
     context = {
         'page_name':"Home",
-        'content':"Hello World"
+        'content': Blog.objects.all()[:10]
         }
     return render(request,'home.html',context)
 
@@ -34,10 +34,14 @@ def register(request):
     }
     return render(request,'register.html',context)
 
+@login_required(login_url="/login/")
 def create_blog_post(request):
     if request.method=='POST':
-        print("HAHAHAHA")
-        form = blog_entry()
+        #print("HAHAHAHA")
+        form = blog_entry(request.POST, request.FILES)
+        if form.is_valid():
+            form.save(request)
+            return HttpResponseRedirect('/')
     else:
         form = blog_entry()
     context = {

@@ -9,6 +9,9 @@
   <div class="top-bar-left">
     <ul class="dropdown menu" data-dropdown-menu>
       <li class="menu-text">Coffee Site</li>
+      {% if user.is_authenticated %}
+      <li><a href="/blogcreate">Create Blog Post</a></li>
+      {% endif %}
     </ul>
   </div>
   <div class="top-bar-right">
@@ -32,52 +35,20 @@
 
 <!-- We can now combine rows and columns when there's only one column in that row -->
 <div class="row medium-8 large-7 columns">
+  {% for item in content %}
   <div class="blog-post">
-    <h3>Awesome blog post title <small>3/6/2015</small></h3>
-    <img class="thumbnail" src="http://placehold.it/850x350">
-    <p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper orci. Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus vestibulum. Nulla at nulla justo, eget luctus.</p>
+    <h3>{{ item.title}} <small> {{ item.published_on }}</small></h3>
+    <img class="thumbnail" alt="{{ item.image_description }}" src="media/{{ item.image }}">
+    <p>{{ item.content }}</p>
     <div class="callout">
       <ul class="menu simple">
-        <li><a href="#">Author: Mike Mikers</a></li>
+        <li><a href="#">Author: {{ item.author }}</a></li>
         <li><a href="#">Comments: 3</a></li>
       </ul>
     </div>
   </div>
+  {% endfor %}
 
-  <div class="blog-post">
-    <h3>Awesome blog post title <small>3/6/2015</small></h3>
-    <img class="thumbnail" src="http://placehold.it/850x350">
-    <p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper orci. Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus vestibulum. Nulla at nulla justo, eget luctus.</p>
-    <div class="callout">
-      <ul class="menu simple">
-        <li><a href="#">Author: Mike Mikers</a></li>
-        <li><a href="#">Comments: 3</a></li>
-      </ul>
-    </div>
-  </div>
 
-  <div class="blog-post">
-    <h3>Awesome blog post title <small>3/6/2015</small></h3>
-    <img class="thumbnail" src="http://placehold.it/850x350">
-    <p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper orci. Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus vestibulum. Nulla at nulla justo, eget luctus.</p>
-    <div class="callout">
-      <ul class="menu simple">
-        <li><a href="#">Author: Mike Mikers</a></li>
-        <li><a href="#">Comments: 3</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="blog-post">
-    <h3>Awesome blog post title <small>3/6/2015</small></h3>
-    <img class="thumbnail" src="http://placehold.it/850x350">
-    <p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper orci. Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus vestibulum. Nulla at nulla justo, eget luctus.</p>
-    <div class="callout">
-      <ul class="menu simple">
-        <li><a href="#">Author: Mike Mikers</a></li>
-        <li><a href="#">Comments: 3</a></li>
-      </ul>
-    </div>
-  </div>
 </div>
 {% endblock %}

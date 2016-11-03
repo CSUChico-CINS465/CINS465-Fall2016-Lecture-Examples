@@ -23,7 +23,7 @@
 {% if user.is_authenticated %}
 <div class="row">
   <div class="medium-6 medium-centered large-4 large-centered columns">
-    <form method="post" action="">
+    <form method="post" action="" enctype="multipart/form-data">
       {% csrf_token %}
       <div class="row column log-in-form">
         <h4 class="text-center">Create Blog Entry</h4>

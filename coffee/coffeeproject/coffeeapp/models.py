@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 
 class Blog(models.Model):
-    published_on=models.DateTimeField()
+    published_on=models.DateTimeField(auto_now_add=True)
     title=models.CharField(max_length=144)
     content=models.TextField()
     image=models.ImageField(max_length=144, upload_to='uploads/%Y/%m/%d/')
@@ -15,7 +15,7 @@ class Blog(models.Model):
 
 # Create your models here.
 class comment(models.Model):
-    posted_on=models.DateTimeField()
+    posted_on=models.DateTimeField(auto_now_add=True)
     comment_content=models.CharField(max_length=144)
     author=models.ForeignKey(User, on_delete=models.CASCADE)
     blog=models.ForeignKey(Blog,related_name="comments")
